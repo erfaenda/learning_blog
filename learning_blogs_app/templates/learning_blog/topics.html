@@ -1,0 +1,16 @@
+{% extends "learning_blog/base.html" %} <!--Стандартно наследуемся от первичного шаблона-->
+
+{% block content %} <!--Открыли блок с основным контентом дочерней страницы-->
+
+  <p>Темы</p>
+
+  <ul>
+      {% for topic in topics %}
+        <li>{{ topics }}</li>
+      {% empty %}
+        <li>Нет добавленных тем.</li>
+      {% endfor %}
+
+  </ul>
+
+{% endblock content %} <!--Закрыли блок контента-->
