@@ -1,7 +1,7 @@
 {% extends 'learning_blog/base.html' %}
 
 {% block content %}
-
+  <a href="{% url 'learning_blogs_app:new_zapis' topic.id %}"><button name="Ok">Добавить новую запись</button></a>
   <p>Тема: {{ topic }}</p> <!--вводится текущая тема -->
 
   <p>Записи:</p>

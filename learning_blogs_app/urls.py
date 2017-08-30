@@ -15,6 +15,8 @@ urlpatterns = [ # список страниц которые могут запр
             url(r'^topics/(?P<topic_id>\d+)/$', views.topic, name='topic'), #тут ничего не ясно
         # страница для добавления новой темы
         url(r'^new_topic/$', views.new_topic, name='new_topic'),
+        # страница для длбавления новой записи
+        url(r'^new_zapis/(?P<topic_id>\d+)/$', views.new_zapis, name='new_zapis'),
 
 
 ]

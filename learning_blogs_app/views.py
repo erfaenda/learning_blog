@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from .models import Topic # имортируем связанную с нужными нам данными - Topics
-from .forms import TopicForm
+from .forms import TopicForm, ZapisForm
 from django.http import HttpResponseRedirect # для перенаправления пользователя к странице топикс
-from django.core.urlresolvers import reverse #
+from django.core.urlresolvers import reverse # тоже какая то хуйня для редерикта
 
 # Create your views here.
 def index(request):
@@ -36,3 +36,19 @@ def new_topic(request):
 
     context = {'form': form}
     return render(request, 'learning_blog/new_topic.html', context)
+
+def new_zapis(request, topic_id):
+    '''Добавляет новую запись по конкретной теме'''
+    topic = Topic.objects.get(id=topic_id)
+    if request.method != 'POST':
+        form = ZapisForm()
+    else:
+        form = ZapisForm(data=request.POST)
+        if form.is_valid():
+            new_zapis = form.save(commit=False)
+            new_zapis.topic = topic
+            new_zapis.save()
+            return HttpResponseRedirect(reverse('learning_blogs_app:topic', args=[topic_id]))
+
+    context = {'topic': topic, 'form': form}
+    return render(request, 'learning_blog/new_zapis.html', context)

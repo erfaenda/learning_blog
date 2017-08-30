@@ -1,6 +1,7 @@
 {% extends "learning_blog/base.html" %} <!--Стандартно наследуемся от первичного шаблона-->
 
 {% block content %} <!--Открыли блок с основным контентом дочерней страницы-->
+  <a href="{% url 'learning_blogs_app:new_topic' %}"><button name="Ok">Добавить новую тему</button></a>
 
   <p>Темы:</p>
 

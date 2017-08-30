@@ -1,0 +1,10 @@
+{% extends "learning_blog/base.html" %}
+{% block content %}
+    <p>Добавить новую тему:</p>
+    <form action="{% url 'learning_blogs_app:new_topic' %}" method="post"> <!--сообщает серверу куда отправлять данные отправленные формой-->
+        {% csrf_token %} <!--защита от несанкционерованного доступа вне сайта -->
+        {{ form.as_p }} <!-- .as_p отображать формы в виде абзацев -->
+        <button name="Ok">Ok</button> <!--просто кнопка -->
+    </form> <!--форма закрылась -->
+
+{% endblock content %}
