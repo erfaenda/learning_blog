@@ -9,7 +9,7 @@ class Topic(models.Model):
         '''Возвращает строковое представление модели'''
         return self.text
 
-class Infa(models.Model):
+class Chain(models.Model):
     '''основная информация хранящяяся в теме'''
     topic = models.ForeignKey(Topic) # связываем информацию с темой
     text = models.TextField() # текстовое поле без ограничений

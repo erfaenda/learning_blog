@@ -1,0 +1,22 @@
+{% extends 'learning_blog/base.html' %}
+
+{% block content %}
+
+  <p>Тема: {{ topic }}</p> <!--вводится текущая тема -->
+
+  <p>Записи:</p>
+  <ul>
+  {% for chain in chains %} <!--пробегает список -->
+      <li>
+        <p>{{ chain.date_added|date:'M d, Y H:i' }}</p> <!-- | - это фильтр шаблонной переменной, выводит в нужном нам формате-->
+        <p>{{ chain.text|linebreaks }}</p><!--фильтр linebreaks-чтобы длинный текст содержал разрывы строк в формате подерж браузером
+        вместо непрервного текста -->
+      </li>
+  {% empty %}
+      <li>
+        Еще нет записей.
+      </li>
+
+  {% endfor %}
+  </ul>
+{% endblock content %}
